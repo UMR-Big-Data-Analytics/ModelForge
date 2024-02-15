@@ -1,0 +1,2 @@
+class NotEnoughDataAfterBreakingChange(Exception):
+    pass

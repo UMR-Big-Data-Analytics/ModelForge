@@ -1,57 +1,73 @@
-model_clustering
-==============================
+# ModelForge
 
-Clustering and aggregation of energy forecasting models
+<div align="center">
 
-Project Organization
-------------
+![ModelForge Logo](./static/architecture.jpg)
 
-    ├── LICENSE
-    ├── Makefile           <- Makefile with commands like `make data` or `make train`
-    ├── README.md          <- The top-level README for developers using this project.
-    ├── data
-    │   ├── external       <- Data from third party sources.
-    │   ├── interim        <- Intermediate data that has been transformed.
-    │   ├── processed      <- The final, canonical data sets for modeling.
-    │   └── raw            <- The original, immutable data dump.
-    │
-    ├── docs               <- A default Sphinx project; see sphinx-doc.org for details
-    │
-    ├── models             <- Trained and serialized models, model predictions, or model summaries
-    │
-    ├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
-    │                         the creator's initials, and a short `-` delimited description, e.g.
-    │                         `1.0-jqp-initial-data-exploration`.
-    │
-    ├── references         <- Data dictionaries, manuals, and all other explanatory materials.
-    │
-    ├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
-    │   └── figures        <- Generated graphics and figures to be used in reporting
-    │
-    ├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
-    │                         generated with `pip freeze > requirements.txt`
-    │
-    ├── setup.py           <- makes project pip installable (pip install -e .) so src can be imported
-    ├── src                <- Source code for use in this project.
-    │   ├── __init__.py    <- Makes src a Python module
-    │   │
-    │   ├── data           <- Scripts to download or generate data
-    │   │   └── make_dataset.py
-    │   │
-    │   ├── features       <- Scripts to turn raw data into features for modeling
-    │   │   └── build_features.py
-    │   │
-    │   ├── models         <- Scripts to train models and then use trained models to make
-    │   │   │                 predictions
-    │   │   ├── predict_model.py
-    │   │   └── train_model.py
-    │   │
-    │   └── visualization  <- Scripts to create exploratory and results oriented visualizations
-    │       └── visualize.py
-    │
-    └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
+**Model Clustering and Consolidation System for Machine Learning Models**
 
+[![Python 3.11](https://img.shields.io/badge/Python-3.11-blue.svg)](https://www.python.org/downloads/release/python-311/)
+[![Poetry](https://img.shields.io/badge/Poetry-Package%20Manager-blue)](https://python-poetry.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
---------
+</div>
 
-<p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
+## 📋 Overview
+
+ModelForge is an advanced system for clustering and consolidating machine learning models. It efficiently reduces a large collection of models into a smaller set of representative models while preserving performance characteristics.
+
+## ✨ Key Features
+
+- **Model Clustering** - Group similar models based on performance metrics and characteristics
+- **Model Consolidation** - Generate a smaller, representative set of models from the original collection
+- **Performance Evaluation** - Comprehensively evaluate consolidated models against the original set
+- **Visualization Tools** - Analyze model similarities and differences through intuitive visualizations
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Python 3.11 or higher
+- Poetry (dependency management)
+
+### Installation
+
+Clone the repository and install dependencies:
+
+```bash
+git clone https://github.com/yourusername/modelforge.git
+cd modelforge
+poetry install
+```
+
+### Quick Usage
+
+See our [demo notebook](docs/demo.ipynb) for a minimal example of how to use ModelForge.
+
+## 📚 Documentation
+
+- [Using Your Own Datasets](docs/own_dataset.md) - Learn how to create and format your own datasets
+- [Evaluation Datasets](docs/datasets.md) - Details on datasets used in ModelForge evaluation
+- [Reproducibility](docs/reproducibility.md) - Instructions to reproduce our research results
+- [Visualization & Plots](docs/plots.md) - Detailed explanation of visualization options and additional results
+
+## 🔬 Research & Results
+
+Our research demonstrates significant efficiency gains when using ModelForge for model consolidation while maintaining performance thresholds. See our [paper](link-to-paper) for complete details.
+
+## 📝 Citation
+
+If you use ModelForge in your research, please cite our paper:
+
+```bibtex
+TDB
+```
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+

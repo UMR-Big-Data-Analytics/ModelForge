@@ -1,33 +1,49 @@
 [tool.poetry]
-name = "model-clustering"
+name = "modelforge"
 version = "0.1.0"
-description = ""
+description = "ModelForge is a library to consolidate similar machine learning into a small set of models"
 authors = ["Florian Siepe <sifr@viessmann.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.12"
-pandas = "^2.2.0"
-numpy = "^1.26.4"
-scikit-learn = "^1.4.0"
+python = "3.11.10"
 scipy = "^1.12.0"
 hydra-core = "^1.3.2"
-pyarrow = "^15.0.0"
-matplotlib = "^3.8.2"
+pyarrow = "^17.0.0"
 seaborn = "^0.13.2"
 jupyter = "^1.0.0"
-fastcluster = "^1.2.6"
-dask = {extras = ["complete"], version = "^2024.1.1"}
-distributed = "^2024.1.1"
+numba = "^0.60.0"
+matplotlib = "^3.8.3"
+dask = { extras = ["complete"], version = "^2024.2.1" }
+scikit-learn = "^1.4.1.post1"
+pandas = "^2.2.3"
+distributed = "^2024.2.1"
+mypy = "^1.10.0"
+xgboost = "^2.1.2"
+prts = "^1.0.0.3"
+dask-labextension = "^7.0.0"
+pyproj = "^3.7.0"
+geopy = "^2.4.1"
+openpyxl = "^3.1.5"
+shap = "^0.46.0"
+numpy = "^1.26.4"
+xgboost-distribution = "^0.3.0"
+pytest = "^8.3.4"
+umap-learn = "^0.5.7"
 
 
-[tool.poetry.group.dev.dependencies ]
+[tool.poetry.group.dev.dependencies]
 black = "^24.1.1"
 click = "^8.1.7"
 sphinx = "^7.2.6"
 coverage = "^7.4.1"
 flake8 = "^7.0.0"
 python-dotenv = "^1.0.1"
+isort = "^5.13.2"
+scienceplots = "^2.1.1"
+
+[tool.isort]
+profile = "black"
 
 [build-system]
 requires = ["poetry-core"]

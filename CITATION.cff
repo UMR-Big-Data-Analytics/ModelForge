@@ -20,7 +20,7 @@ conference:
   date-start: 2025-10-09
   date-end: 2025-10-13
 
-repository-code: "https://github.com/floriansiepe/ModelForge"
+repository-code: "https://github.com/UMR-Big-Data-Analytics/ModelForge"
 
 doi: "TBD"
 
@@ -45,5 +45,5 @@ preferred-citation:
     date-start: 2025-10-09
     date-end: 2025-10-13
   year: 2025
-  url: "https://github.com/floriansiepe/ModelForge"
+  url: "https://github.com/UMR-Big-Data-Analytics/ModelForge"
   numpages: 10

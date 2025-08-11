@@ -87,7 +87,7 @@ def main(num_runs):
             )
             logger.info(f"Starting featurization for {names} (run {run + 1})")
             start_time = time.time()
-            featurizer.featurize(dataset)
+            featurizer.fit_transform(dataset)
             featurize_time = time.time() - start_time
             featurize_times.append(featurize_time)
             logger.info(

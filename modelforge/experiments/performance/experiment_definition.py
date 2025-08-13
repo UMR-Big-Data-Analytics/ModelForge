@@ -84,7 +84,7 @@ def main(num_runs):
     ]
     client = LocalCluster(n_workers=1, threads_per_worker=1).get_client()
 
-    for names, dataset in zip(dataset_names, datasets)[:1]:
+    for names, dataset in zip(dataset_names[:1], datasets[:1]):
         logger.info(f"Starting dataset {names}")
 
         loss = dataset.model_entities()[0].loss

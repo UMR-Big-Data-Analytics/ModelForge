@@ -6,6 +6,7 @@ import time
 
 import click
 import numpy as np
+from distributed import LocalCluster
 
 from modelforge.datasets.datasets import (
     anomaly_dataset,
@@ -31,13 +32,34 @@ from modelforge.model_clustering.transformer.sampler.set.statistical_set_sampler
 @click.command()
 @click.option(
     "--num-runs",
-    default=5,
+    default=1,
     help="Number of times to run each step for timing measurement",
 )
 def main(num_runs):
     shutil.rmtree("data/results/performance", ignore_errors=True)
-    os.makedirs(f"data/results/performance")
+    os.makedirs(f"data/results/performance", exist_ok=True)
     logger = logging.getLogger(__name__)
+    logger.setLevel(logging.INFO)
+
+    # Create console handler
+    console_handler = logging.StreamHandler()
+    console_handler.setLevel(logging.INFO)
+
+    # Create file handler
+    log_file_path = "logs/performance_experiment.log"
+    file_handler = logging.FileHandler(log_file_path)
+    file_handler.setLevel(logging.INFO)
+
+    # Create formatter and add to handlers
+    formatter = logging.Formatter(
+        "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+    )
+    console_handler.setFormatter(formatter)
+    file_handler.setFormatter(formatter)
+
+    # Add handlers to logger
+    logger.addHandler(console_handler)
+    logger.addHandler(file_handler)
 
     logger.info(f"Running each step {num_runs} times for robust timing measurements")
 
@@ -60,8 +82,9 @@ def main(num_runs):
         "weather_probabilistic",
         "anomaly",
     ]
+    client = LocalCluster(n_workers=1, threads_per_worker=1).get_client()
 
-    for names, dataset in zip(dataset_names, datasets):
+    for names, dataset in zip(dataset_names, datasets)[:1]:
         logger.info(f"Starting dataset {names}")
 
         loss = dataset.model_entities()[0].loss
@@ -84,6 +107,7 @@ def main(num_runs):
                 loss_function=loss,
                 use_train=use_train,
                 skip_cache=True,
+                client=client,
             )
             logger.info(f"Starting featurization for {names} (run {run + 1})")
             start_time = time.time()
@@ -95,7 +119,7 @@ def main(num_runs):
             )
 
             # Measure transform step
-            cp = CrossPerformanceDistance(skip_cache=True)
+            cp = CrossPerformanceDistance(skip_cache=True, client=client)
             logger.info(f"Starting transformation for {names} (run {run + 1})")
             start_time = time.time()
             cp.transform(dataset)

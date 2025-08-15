@@ -32,7 +32,7 @@ from modelforge.model_clustering.transformer.sampler.set.statistical_set_sampler
 @click.command()
 @click.option(
     "--num-runs",
-    default=1,
+    default=3,
     help="Number of times to run each step for timing measurement",
 )
 def main(num_runs):
@@ -84,7 +84,7 @@ def main(num_runs):
     ]
     client = LocalCluster(n_workers=1, threads_per_worker=1).get_client()
 
-    for names, dataset in zip(dataset_names[:1], datasets[:1]):
+    for names, dataset in zip(dataset_names, datasets):
         logger.info(f"Starting dataset {names}")
 
         loss = dataset.model_entities()[0].loss

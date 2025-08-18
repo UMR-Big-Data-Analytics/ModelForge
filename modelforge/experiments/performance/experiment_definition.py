@@ -27,6 +27,7 @@ from modelforge.model_clustering.transformer.sampler.set.measure.entropy import 
 from modelforge.model_clustering.transformer.sampler.set.statistical_set_sampler import (
     StatisticalSetSampler,
 )
+from modelforge.shared.losses import crps_unpacking
 
 
 @click.command()
@@ -88,6 +89,8 @@ def main(num_runs):
         logger.info(f"Starting dataset {names}")
 
         loss = dataset.model_entities()[0].loss
+        if names == "weather_probabilistic":
+            loss = crps_unpacking
         sampler = StatisticalSetSampler(10, TargetSelector(), Entropy(), "max")
         use_train = True
         # Quick fix as many training sets have no anomalies
@@ -119,7 +122,9 @@ def main(num_runs):
             )
 
             # Measure transform step
-            cp = CrossPerformanceDistance(skip_cache=True, client=client)
+            cp = CrossPerformanceDistance(
+                skip_cache=True, client=client, loss_function=loss
+            )
             logger.info(f"Starting transformation for {names} (run {run + 1})")
             start_time = time.time()
             cp.transform(dataset)

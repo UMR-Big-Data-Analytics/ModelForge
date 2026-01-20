@@ -60,7 +60,7 @@ Our research demonstrates significant efficiency gains when using ModelForge for
 If you use ModelForge in your research, please cite our paper:
 
 ```bibtex
-TDB
+TBD
 ```
 
 ## 🤝 Contributing
